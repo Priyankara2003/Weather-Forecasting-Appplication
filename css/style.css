@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin-top: 20px;
+    background-color: #e2debe;
+    font-family: "Poppins", sans-serif;
+}
+
+.head {
+    position: relative;
+    gap: 250px;
+}
+
+.searchbar {
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 2px 2px 10px #3c3c3c;
+}
+
+.search_input {
+    color: #0F1D30;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: black;
+    line-height: 40px;
+    width: 250px;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover>.search_icon {
+    color: #e74c3c;
+}
+
+.search_icon {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.icon-location {
+    margin-right: 10px;
+    font-size: 24px;
+    margin-top: 7px;
+    color: #000000;
+    opacity: 55%;
+}
+
+.time-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-date span {
+    font-weight: 500;
+    color: #0F1D30;
+}
+
+.img-sun{
+    position: absolute;
+    left: 5%;
+    width: 600px;
+    height: 400px;
+    opacity: 40%;
+}
+
+.information-box{
+    margin-top: 15%;
+    margin-left: 17%;
+}
+
+.country h2{
+    font-weight: 400;
+    font-size: 30px;
+    color: #0F1D30;
+}
+
+.temp h1{
+    font-weight: 700;
+    font-size: 68px;
+    color: #003173;
+}
+
+.weather-condition h5{
+    font-weight: 500;
+    font-size: 25px;
+    color: #0F1D30;
+}
+
+.temp{
+    display: flex;
+    justify-content: center;
+    margin-left: 18%;
+    gap: 50px;
+}
+
+.wind-details-main{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wind-details-main i{
+    font-size: 20px;
+    font-weight: bold;
+    color: #0F1D30;
+}
+
+.humidity-details-main{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.humidity-details-main i{
+    font-weight: bold;
+    font-size: 20px;
+    color: #0F1D30;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.additional-details{
+    margin-top: 10%;
+    justify-content: space-around;
+}
+
+.card-day{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 113px;
+    height: 134px;
+    border:2px solid black;
+    border-radius: 15px;
+    padding-top: 5px;
+}
+
+.card-day .img img{
+    width: 50px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.card-day .day{
+    font-size: 15px;
+}
+
+.card-day .condition{
+    font-size: 13px;
+}
+
+.card-day h4{
+    color: #003173;
+}
+
+.greeting h3{
+    color: #003173;
+}
+
+.title-hourly{
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.card-hourly{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
