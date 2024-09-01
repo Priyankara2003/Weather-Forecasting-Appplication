@@ -2,7 +2,7 @@ const input = document.getElementById("search_input");
 const forecastDailyDataDisplay = document.getElementById('daily-forecasting');
 const forecastHourlyDataDisplay = document.getElementById('hourly-forecasting');
 const greetingDisplay = document.getElementById('greeting');
-const baseUrl = 'http://api.weatherapi.com/v1';
+const baseUrl = 'https://api.weatherapi.com/v1';
 
 // update current weather
 
