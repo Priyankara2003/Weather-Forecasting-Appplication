@@ -9,6 +9,7 @@ body {
     margin-top: 20px;
     background-color: #e2debe;
     font-family: "Poppins", sans-serif;
+    overflow: hidden;
 }
 
 .head {
@@ -228,4 +229,13 @@ body {
 .name{
     text-align: center;
     opacity: 70%;
+}
+
+.cloud-img{
+    width: 750px;
+    position: absolute;
+    top: 45%;
+    left: 55%;
+    opacity: 60%;
+    z-index: -99;
 }
