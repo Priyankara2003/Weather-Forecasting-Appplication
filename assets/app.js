@@ -4,12 +4,41 @@ const forecastHourlyDataDisplay = document.getElementById('hourly-forecasting');
 const greetingDisplay = document.getElementById('greeting');
 const baseUrl = 'https://api.weatherapi.com/v1';
 
+//get location
+
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(successFunc, errorFunc);
+}
+
+async function successFunc(value) {
+    let lat = value.coords.latitude;
+    let long = value.coords.longitude;
+
+    try {
+        const response = await fetch(baseUrl + `/current.json?key=515056baf37f44d4a7643227242708&q=${lat},${long}`);
+        const currentData = await response.json();
+        updateCurrentData(currentData);
+
+        const response2 = await fetch(baseUrl + `/forecast.json?key=515056baf37f44d4a7643227242708&days=6&q=${lat},${long}&day_fields=time,temp_c,condition&hour_fields=time,temp_c,condition`);
+        const forecastData = await response2.json();
+        updateForecastData(forecastData);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function errorFunc(err){
+    console.log(err);
+}
+
+
 // update current weather
 
 input.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         getCurrent();
-        getForecast()
+        getForecast();
     }
 });
 
@@ -17,7 +46,7 @@ async function getCurrent() {
     try {
         const response = await fetch(baseUrl + `/current.json?key=515056baf37f44d4a7643227242708&q=${input.value}`);
         const currentData = await response.json();
-        updateCurrentData(s = currentData);
+        updateCurrentData(currentData);
 
     } catch (error) {
         console.log(error);
@@ -154,7 +183,7 @@ function displayClock() {
 
 //set date
 
-function displayDate(){
+function displayDate() {
     let display = new Date().toLocaleDateString();
     document.getElementById('date').innerHTML = display;
     setTimeout(displayDate, 10000)
@@ -162,12 +191,12 @@ function displayDate(){
 
 //greetings 
 
-function setGreetings(){
+function setGreetings() {
     if (new Date().getHours() < 12 & new Date().getHours() >= 5) {
         greetingDisplay.innerText = 'Good Morning !';
-    }else if (new Date().getHours() < 17 & new Date().getHours() >= 12) {
+    } else if (new Date().getHours() < 17 & new Date().getHours() >= 12) {
         greetingDisplay.innerText = 'Good Afternoon !'
-    }else{
+    } else {
         greetingDisplay.innerText = 'Good Evening !'
     }
     setTimeout(setGreetings, 10000)
