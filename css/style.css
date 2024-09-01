@@ -78,8 +78,9 @@ body {
 }
 
 .information-box{
-    margin-top: 15%;
-    margin-left: 17%;
+    margin-top: 13%;
+    margin-left: 20%;
+    z-index: 999;
 }
 
 .country h2{
@@ -142,12 +143,42 @@ body {
     justify-content: space-around;
 }
 
+.card-hourly{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 113px;
+    height: auto;
+    border:2px solid black;
+    border-radius: 15px;
+    padding-top: 5px;
+}
+
+.card-hourly .img img{
+    width: 50px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.card-hourly .day{
+    font-size: 15px;
+}
+
+.card-hourly .condition{
+    margin-top: -5px;
+    font-size: 13px;
+}
+
+.card-hourly h4{
+    color: #003173;
+}
+
 .card-day{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 113px;
-    height: 134px;
+    height: auto;
     border:2px solid black;
     border-radius: 15px;
     padding-top: 5px;
@@ -164,6 +195,7 @@ body {
 }
 
 .card-day .condition{
+    margin-top: -5px;
     font-size: 13px;
 }
 
@@ -176,14 +208,24 @@ body {
 }
 
 .title-hourly{
-    margin-top: 70px;
+    margin-top: 50px;
     margin-bottom: 20px;
     font-weight: 600;
     font-size: 20px;
 }
 
-.card-hourly{
+.hourly-forecasting{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 10px;
+    gap: 20px;
+}
+
+.spn{
+    font-size: 20px;
+    opacity: 90%;
+}
+
+.name{
+    text-align: center;
+    opacity: 70%;
 }

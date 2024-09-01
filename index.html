@@ -11,7 +11,7 @@
     <title>Weather Forecasting Application</title>
 </head>
 
-<body>
+<body onload="displayClock(),displayDate(),setGreetings()">
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
@@ -19,14 +19,14 @@
                 <div class="head d-flex ms-auto">
                     <div class="d-flex align-items-center me-auto">
                         <div class="searchbar">
-                            <input class="search_input" type="text" name="" placeholder="Enter Your Location" />
-                            <a href="#" class="search_icon"><i class="bx bx-current-location icon-location"></i></a>
+                            <input class="search_input" type="text" name="" placeholder="Enter Your Location" id="search_input" autocomplete="off"/>
+                            <i class="bx bx-current-location icon-location search_icon" role="button" onclick="getCurrent()"></i>
                         </div>
                     </div>
 
                     <div class="time-date">
-                        <span class="time me-5 fw-semibold">12:34:00 PM</span>
-                        <span class="date fw-semibold">27 AUG 2024</span>
+                        <span class="time me-5 fw-semibold" id="time">12:34:00 PM</span>
+                        <span class="date fw-semibold" id="date">27 AUG 2024</span>
                     </div>
                 </div>
                 <hr>
@@ -37,24 +37,27 @@
                 </div>
 
                 <div class="information-box">
+                    <div class="name">
+                        <span class="text-center" id="name">Neluwa</span>
+                    </div>
                     <div class="country">
-                        <h2 class="text-center">Sri Lanka</h2>
+                        <h2 class="text-center" id="country">Sri Lanka</h2>
                     </div>
                     <div class="temp mb-2 mt-3">
-                        <h1 class="text-center">31 °C</h1>
+                        <h1 class="text-center" id="temp-current">31 °C</h1>
                         <div class="details d-flex flex-column mt-3">
                             <div class="wind-details-main">
                                 <i class="bx bx-wind"></i>
-                                <span class="fw-bold">6.1mph</span>
+                                <span class="fw-bold" id="wind-current">6.1mph</span>
                             </div>
                             <div class="humidity-details-main mt-2">
                                 <i class="bx bx-droplet"></i>
-                                <span class="fw-bold">80%</span>
+                                <span class="fw-bold" id="humidity-current">80%</span>
                             </div>
                         </div>
                     </div>
                     <div class="weather-condition">
-                        <h5 class="text-center">Sunny</h5>
+                        <h5 class="text-center" id="condition">Sunny</h5>
                     </div>
                 </div>
 
@@ -65,48 +68,48 @@
                             <span class="fw-semibold">Humidity</span>
                             <i class="bx bx-info-circle opacity-50"></i>
                         </div>
-                        <span class="text-center mt-2">90%</span>
+                        <span class="text-center mt-2" id="humidity-current-info">90%</span>
                     </div>
                     <div class="info">
                         <div class="ttl">
-                            <span class="fw-semibold">Air Quality</span>
+                            <span class="fw-semibold">UV Index</span>
                             <i class="bx bx-info-circle opacity-50"></i>
                         </div>
-                        <span class="text-center mt-2">100</span>
+                        <span class="text-center mt-2" id="uv-current-info">100</span>
                     </div>
                     <div class="info">
                         <div class="ttl">
                             <span class="fw-semibold">Wind</span>
                             <i class="bx bx-info-circle opacity-50"></i>
                         </div>
-                        <span class="text-center mt-2">6.1mph</span>
+                        <span class="text-center mt-2" id="wind-current-info">6.1mph</span>
                     </div>
                     <div class="info">
                         <div class="ttl">
-                            <span class="fw-semibold">Visibility</span>
+                            <span class="fw-semibold">Cloud Cover</span>
                             <i class="bx bx-info-circle opacity-50"></i>
                         </div>
-                        <span class="text-center mt-2">90%</span>
+                        <span class="text-center mt-2" id="cloud-current-info">90%</span>
                     </div>
                     <div class="info">
                         <div class="ttl">
                             <span class="fw-semibold">Pressure</span>
                             <i class="bx bx-info-circle opacity-50"></i>
                         </div>
-                        <span class="text-center mt-2">21psi</span>
+                        <span class="text-center mt-2" id="pressure-current-info">21psi</span>
                     </div>
                 </div>
                 <hr>
 
                 <!-- daily forecasting cards -->
-                <div class="daily-forecasting mt-4 d-flex flex-row justify-content-around">
+                <div class="daily-forecasting mt-3 d-flex flex-row justify-content-around" id="daily-forecasting">
                     <div class="card-day">
                         <span class="day fw-semibold">Today</span>
                         <div class="img">
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
                     <div class="card-day">
                         <span class="day fw-semibold">Sat</span>
@@ -114,7 +117,7 @@
                             <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">28 °C</h4>
-                        <span class="fw-semibold condition">Partly Cloud</span>
+                        <span class="fw-semibold condition text-center mb-2">Partly Cloud</span>
                     </div>
                     <div class="card-day">
                         <span class="day fw-semibold">Today</span>
@@ -122,7 +125,7 @@
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
                     <div class="card-day">
                         <span class="day fw-semibold">Today</span>
@@ -130,7 +133,7 @@
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
                     <div class="card-day">
                         <span class="day fw-semibold">Today</span>
@@ -138,7 +141,7 @@
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
                 </div>
             </div>
@@ -146,74 +149,74 @@
             <!-- right side design -->
             <div class="col-sm-4">
                 <div class="greeting">
-                    <h3 class="fw-semibold text-center">Good Morning !</h3>
+                    <h3 class="fw-semibold text-center" id="greeting">Good Morning !</h3>
                 </div>
                 <h5 class="title-hourly">Hourly Forecast</h5>
-                <div class="card-hourly">
-                    <div class="card-day">
+                <div class="hourly-forecasting" id="hourly-forecasting">
+                    <div class="card-hourly">
                         <span class="day fw-semibold">Today</span>
                         <div class="img">
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
-                    <div class="card-day">
+                    <div class="card-hourly">
                         <span class="day fw-semibold">Today</span>
                         <div class="img">
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
-                    <div class="card-day">
+                    <div class="card-hourly">
                         <span class="day fw-semibold">Today</span>
                         <div class="img">
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
-                    <div class="card-day">
+                    <div class="card-hourly">
                         <span class="day fw-semibold">Today</span>
                         <div class="img">
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
-                    <div class="card-day">
+                    <div class="card-hourly">
                         <span class="day fw-semibold">Today</span>
                         <div class="img">
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
-                    <div class="card-day">
+                    <div class="card-hourly">
                         <span class="day fw-semibold">Today</span>
                         <div class="img">
                             <img src="http://cdn.weatherapi.com/weather/64x64/day/113.png" alt="sunny"><br>
                         </div>
                         <h4 class="fw-bold">31 °C</h4>
-                        <span class="fw-semibold condition">sunny</span>
+                        <span class="fw-semibold condition text-center mb-2">sunny</span>
                     </div>
                 </div>
-                <div class="time-local mt-5">
+                <div class="time-local mt-4">
                     <div class="time-zone mb-4">
-                        <span class="main-ttl fw-semibold me-3">Time Zone :-</span><span>Asia/Colombo</span>
+                        <span class="main-ttl fw-semibold me-3">Time Zone :-</span><span id="time-zone">Asia/Colombo</span>
                     </div>
                     <div class="local-time mb-4">
-                        <span class="main-ttl fw-semibold me-3">Local Time :-</span><span>2024-08-27   12:34</span>
+                        <span class="main-ttl fw-semibold me-3">Local Time :-</span><span id="local-time">2024-08-27   12:34</span>
                     </div>
                     <div class="feels-like mb-4">
-                        <span class="main-ttl fw-semibold me-3">Feels Like(°C) :-</span><span>32.9 °C</span>
+                        <span class="main-ttl fw-semibold me-3">Feels Like(°C) :-</span><span id="feels-like">32.9 °C</span>
                     </div>
-                    <div class="heet-index mb-4">
-                        <span class="main-ttl fw-semibold me-3">Heat Index(°C) :-</span><span>26 °C</span>
+                    <div class="heat-index mb-4">
+                        <span class="main-ttl fw-semibold me-3">Heat Index(°C) :-</span><span id="heat-index">26 °C</span>
                     </div>
                     <div class="last-updated">
-                        <span class="main-ttl fw-semibold me-3">Last Data Updated Time :-</span><span>2024-08-30 04:45</span>
+                        <span class="main-ttl fw-semibold me-3">Last Data Updated Time :-</span><span id="last-updated">2024-08-30 04:45</span>
                     </div>
                 </div>
             </div>
@@ -223,6 +226,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="assets/app.js"></script>
 </body>
 
 </html>
